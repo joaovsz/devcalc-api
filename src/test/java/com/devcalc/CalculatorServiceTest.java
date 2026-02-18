@@ -30,6 +30,11 @@ class CalculatorServiceTest {
     }
 
     @Test
+    void shouldDivideDecimalNumbers() {
+        assertEquals(2.5, calculatorService.divide(10, 4));
+    }
+
+    @Test
     void shouldThrowExceptionWhenDividingByZero() {
         assertThrows(IllegalArgumentException.class, () -> calculatorService.divide(10, 0));
     }
