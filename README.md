@@ -39,3 +39,4 @@ mvn test
 - `ci.yml`: pipeline com jobs `checkout`, `build`, `test`, `package` e `deploy`, com suporte a execucao manual (`workflow_dispatch`).
 
 ## Evidencias da atividade
+Alteração no readme.md para mostrar que não rodará o workflow
