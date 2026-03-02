@@ -55,5 +55,3 @@ A falha proposital do pipeline foi identificada pela aba **Actions**, analisando
 
 Comparando os gatilhos: no modo **push** a execucao e automatica e dispara conforme as regras do `on.push.paths`; no modo **Run workflow** a execucao e manual e permite escolher os parametros `run_tests` e `run_lint`, tornando a validacao mais flexivel para cenarios especificos de verificacao.
 
-## Evidencias
-Os prints da atividade devem ser armazenados na pasta `evidencias/`.
