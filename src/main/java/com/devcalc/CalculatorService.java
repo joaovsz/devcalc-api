@@ -23,4 +23,11 @@ public class CalculatorService {
         }
         return a / b;
     }
+    
+    public double calcularRaizQuadrada(double x) {
+        if (x < 0) {
+            throw new IllegalArgumentException("Não existe raiz quadrada real de números negativos.");
+        }
+        return Math.sqrt(x);
+    }
 }

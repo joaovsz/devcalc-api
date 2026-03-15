@@ -1,6 +1,7 @@
 package com.devcalc;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,12 @@ public class CalculatorController {
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
         }
+    }
+    
+    @GetMapping("/sqrt")
+    public ResponseEntity<Double> getRaizQuadrada(@RequestParam double x) {
+        double resultado = calculatorService.calcularRaizQuadrada(x);
+        return ResponseEntity.ok(resultado);
     }
 
     private Number normalize(double value) {

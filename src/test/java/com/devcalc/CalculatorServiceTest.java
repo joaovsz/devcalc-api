@@ -33,4 +33,17 @@ class CalculatorServiceTest {
     void shouldThrowExceptionWhenDividingByZero() {
         assertThrows(IllegalArgumentException.class, () -> calculatorService.divide(10, 0));
     }
+    
+    @Test
+    public void testCalcularRaizQuadrada() {
+        double resultado = calculatorService.calcularRaizQuadrada(16);
+        assertEquals(4.0, resultado, 0.0001);
+    }
+
+    @Test
+    public void testCalcularRaizQuadradaNumeroNegativo() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculatorService.calcularRaizQuadrada(-4);
+        });
+    }
 }
