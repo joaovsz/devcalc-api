@@ -1,0 +1,23 @@
+name: Etapa 1 - Self-Hosted Runner
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  run-on-local:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Exibir informações do sistema
+        run: |
+          uname -a
+          java -version
+
+      - name: Instalar software adicional (Tree)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tree
+          tree --version

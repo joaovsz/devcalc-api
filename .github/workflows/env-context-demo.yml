@@ -1,0 +1,24 @@
+name: Etapa 3 - Escopos e Contextos (env-context-demo)
+on: [push, workflow_dispatch]
+
+env:
+  STAGE: workflow_level
+
+jobs:
+  demo-escopo:
+    runs-on: ubuntu-latest
+    env:
+      STAGE: job_level 
+    steps:
+      - name: Exibir Contextos do GitHub
+        run: |
+          echo "Workflow acionado por: ${{ github.actor }}"
+          echo "Sistema Operacional do Runner: ${{ runner.os }}"
+
+      - name: Exibir Variável no Nível do Job
+        run: echo "O valor de STAGE aqui é $STAGE"
+
+      - name: Exibir Variável no Nível do Step
+        env:
+          STAGE: step_level
+        run: echo "O valor de STAGE agora é $STAGE" 
