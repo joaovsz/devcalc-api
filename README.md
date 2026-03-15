@@ -55,3 +55,30 @@ A falha proposital do pipeline foi identificada pela aba **Actions**, analisando
 
 Comparando os gatilhos: no modo **push** a execucao e automatica e dispara conforme as regras do `on.push.paths`; no modo **Run workflow** a execucao e manual e permite escolher os parametros `run_tests` e `run_lint`, tornando a validacao mais flexivel para cenarios especificos de verificacao.
 
+## TP3 - Segurança, Ambientes e Runners Customizados no CI/CD
+
+1. **Runner Auto-Hospedado:** Configurei um runner na minha própria máquina (Mac ARM64) para rodar os jobs do GitHub Actions localmente, instalando dependências dinamicamente durante o processo.
+
+2. **Variáveis e Secrets:** Tirei a exposição de dados fixos do código. Configurei variáveis de ambiente (`APP_MODE`, `SUPPORT_EMAIL`) e protegi dados confidenciais usando os Secrets do GitHub (`PROD_TOKEN`).
+
+3. **Escopos e Contextos:** Organizei variáveis para mostrar a hierarquia entre níveis de workflow, job e step. Também utilizei contextos nativos (`github.actor` e `runner.os`) para melhorar o rastreio da execução.
+
+4. **Permissões do GITHUB_TOKEN:** Ajustei as permissões do repositório e automatizei a criação de issues. Se um deploy falhar, o próprio bot do GitHub Actions abre um ticket com o erro.
+
+5. **Ambientes (Dev e Prod):** Separei a infraestrutura lógica criando os ambientes de `dev` e `prod`. Coloquei uma trava de segurança em produção que exige a minha aprovação manual (*Required reviewers*) antes de publicar.
+
+6. **Nova Funcionalidade na API:** Criei o endpoint `GET /sqrt?x={valor}` no Java para calcular raízes quadradas. Fiz os testes unitários (incluindo tratamento de números negativos) e integrei tudo para o pipeline validar a nova build automaticamente.
+
+### 📄 Evidências
+
+Toda a documentação visual com os prints de execução de cada etapa está detalhada no arquivo [README.md](./evidencias/TP3_Evidencias/README.md).
+
+### 🚀 Como reexecutar os workflows
+
+Deixei os workflows configurados com o gatilho `workflow_dispatch` para facilitar a correção. Para rodar novamente:
+
+1. Vá até a aba **Actions** aqui no repositório.
+
+2. No menu lateral esquerdo, escolha o workflow que deseja testar (ex: "Etapa 3 - Escopos e Contextos").
+
+3. Clique no botão **Run workflow** no lado direito, selecione a branch `main` e confirme.
