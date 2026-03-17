@@ -1,0 +1,84 @@
+tp: "DR4_TP3"
+projeto: "DevCalc API"
+repositorio: "devcalc-api"
+
+aluno:
+  nome: "Joao Vitor Pereira de Souza"
+
+entrega:
+  arquivo_principal: "joao_vitor_pereira_de_souza_DR4_TP3.yml"
+  readme_tp3: "README.md"
+  diretorio_evidencias: "evidencias/TP3_Evidencias"
+  diretorio_evidencias_readme: "evidencias/TP3_Evidencias/README.md"
+
+etapas:
+  etapa_1_runner_auto_hospedado:
+    status: "concluida"
+    workflow: ".github/workflows/demo-tp3.yml"
+    runner: "self-hosted"
+    evidencias:
+      - "evidencias/TP3_Evidencias/criacao_runner.png"
+      - "evidencias/TP3_Evidencias/software_adicional.png"
+
+  etapa_2_variaveis_e_secrets:
+    status: "concluida"
+    workflow: ".github/workflows/secrets_acces-demo.yml"
+    variaveis:
+      - "APP_MODE"
+      - "SUPPORT_EMAIL"
+    secrets:
+      - "PROD_TOKEN"
+    evidencias:
+      - "evidencias/TP3_Evidencias/variaveis_Criadas.png"
+      - "evidencias/TP3_Evidencias/secrets_criadas.png"
+
+  etapa_3_contextos_e_escopos:
+    status: "concluida"
+    workflow: ".github/workflows/env-context-demo.yml"
+    contextos:
+      - "github.actor"
+      - "runner.os"
+    escopos:
+      workflow: "STAGE=workflow_level"
+      job: "STAGE=job_level"
+      step: "STAGE=step_level"
+    evidencia:
+      - "evidencias/TP3_Evidencias/mostrando_vars_no_job.png"
+
+  etapa_4_permissoes_e_github_token:
+    status: "concluida"
+    workflow: ".github/workflows/permissao_issue.yml"
+    permissoes:
+      issues: "write"
+    token: "secrets.GITHUB_TOKEN"
+    evidencia:
+      - "evidencias/TP3_Evidencias/erro-pipeline.png"
+    
+  etapa_5_ambientes_dev_e_prod:
+    status: "concluida"
+    workflow: ".github/workflows/dev_and_prod.yml"
+    ambientes:
+      dev:
+        disparo: "push na branch dev"
+        liberacao: "automatica"
+      prod:
+        disparo: "push na branch main"
+        protecao: "aprovacao manual / required reviewers"
+    evidencia:
+      - "evidencias/TP3_Evidencias/workflows-etapa6.png"
+
+  etapa_6_nova_funcionalidade_api:
+    status: "concluida"
+    endpoint: "GET /sqrt?x={valor}"
+    arquivos_relacionados:
+      - "src/main/java/com/devcalc/CalculatorService.java"
+      - "src/main/java/com/devcalc/CalculatorController.java"
+    evidencia:
+      - "evidencias/TP3_Evidencias/requisicao.png"
+
+observacoes_finais:
+  - "A documentacao resumida do TP3 esta no README principal."
+  - "As evidencias detalhadas com prints e descricoes estão em evidencias/TP3_Evidencias/README.md."
+  - "O projeto está hospedado no GitHub em https://github.com/joaovsz/devcalc-api."
+
+
